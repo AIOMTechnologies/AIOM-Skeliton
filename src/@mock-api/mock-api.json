@@ -382,7 +382,7 @@
       },
       "parameters": []
     },
-    "/dashboards/project/widgets": {
+    "/hospital/dashboard/widgets": {
       "get": {
         "summary": "Get Project Dashboard Widgets",
         "responses": {
@@ -410,7 +410,7 @@
       },
       "parameters": []
     },
-    "/dashboards/project/projects": {
+    "/hospital/dashboard/projects": {
       "get": {
         "summary": "Get Project Dashboard Projects",
         "responses": {
@@ -3363,7 +3363,202 @@
         "description": "Delete E-commerce order."
       }
     },
-    "/ecommerce/products": {
+    "/administrator/employees": {
+      "get": {
+        "summary": "Get E-commerce Products",
+        "tags": [
+          "e-commerce"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/administrator_employee"
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "$ref": "#/components/examples/administrator_employees"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ecommerce_getProducts",
+        "description": "Retrieve E-commerce products."
+      },
+      "parameters": [],
+      "delete": {
+        "summary": "",
+        "tags": [
+          "e-commerce"
+        ],
+        "operationId": "ecommerce_removeProducts",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "description": "Product ids"
+        },
+        "description": "Remove E-commerce products by ids"
+      }
+    },
+    "/administrator/employese/{employeeId}": {
+      "get": {
+        "summary": "Get Employee",
+        "tags": [
+          "e-commerce"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/administrator_employee"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "id": "string",
+                      "name": "string",
+                      "handle": "string",
+                      "description": "string",
+                      "categories": [
+                        null
+                      ],
+                      "tags": [
+                        null
+                      ],
+                      "featuredImageId": "string",
+                      "images": [
+                        null
+                      ],
+                      "priceTaxExcl": 0,
+                      "priceTaxIncl": 0,
+                      "taxRate": 0,
+                      "comparedPrice": 0,
+                      "quantity": 0,
+                      "sku": "string",
+                      "width": "string",
+                      "height": "string",
+                      "depth": "string",
+                      "weight": "string",
+                      "extraShippingFee": 0,
+                      "active": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ecommerce_getProduct",
+        "description": "Retrieve E-commerce product by id."
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "employeeId",
+          "in": "path",
+          "required": true,
+          "description": "product id"
+        }
+      ],
+      "put": {
+        "summary": "Update Product",
+        "tags": [
+          "e-commerce"
+        ],
+        "operationId": "ecommerce_updateProduct",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "description": "Update E-commerce product information.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/administrator_employee"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "id": "string",
+                    "name": "string",
+                    "handle": "string",
+                    "description": "string",
+                    "categories": [
+                      null
+                    ],
+                    "tags": [
+                      null
+                    ],
+                    "featuredImageId": "string",
+                    "images": [
+                      null
+                    ],
+                    "priceTaxExcl": 0,
+                    "priceTaxIncl": 0,
+                    "taxRate": 0,
+                    "comparedPrice": 0,
+                    "quantity": 0,
+                    "sku": "string",
+                    "width": "string",
+                    "height": "string",
+                    "depth": "string",
+                    "weight": "string",
+                    "extraShippingFee": 0,
+                    "active": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Product",
+        "tags": [
+          "e-commerce"
+        ],
+        "operationId": "ecommerce_deleteProduct",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "description": "Delete E-commerce product."
+      }
+    },
+    "/administrator/location/stateMaster": {
       "get": {
         "summary": "Get E-commerce Products",
         "tags": [
@@ -3420,7 +3615,7 @@
         "description": "Remove E-commerce products by ids"
       }
     },
-    "/ecommerce/products/{productId}": {
+    "/administrator/location/stateMaster/{stateId}": {
       "get": {
         "summary": "Get Product",
         "tags": [
@@ -3558,6 +3753,7 @@
         "description": "Delete E-commerce product."
       }
     },
+  
     "/academy/courses": {
       "get": {
         "summary": "Get Academy Courses",
@@ -5913,7 +6109,7 @@
           "shippingDetails"
         ]
       },
-      "ecommerce_product": {
+      "administrator_employee": {
         "description": "",
         "type": "object",
         "x-examples": {
@@ -7258,7 +7454,7 @@
             "description": "Your submission has been accepted and you are ready to sign-up for the final assigment which will be ready in 2 days",
             "time": "2022-05-06T10:57:42.703Z",
             "read": true,
-            "link": "/dashboards/project",
+            "link": "/hospital/dashboard",
             "useRouter": true
           }
         },
@@ -17595,7 +17791,7 @@
           }
         ]
       },
-      "ecommerce_products": {
+      "administrator_employees": {
         "value": [
           {
             "id": "1",
@@ -32712,7 +32908,7 @@
             "description": "<strong>Leo Gill</strong> added you to <em>Top Secret Project</em> group and assigned you as a <em>Project Manager</em>",
             "time": "2022-05-09T10:07:42.703Z",
             "read": true,
-            "link": "/dashboards/project",
+            "link": "/hospital/dashboard",
             "useRouter": true
           },
           {
@@ -32732,7 +32928,7 @@
             "description": "Your <em>Docker container</em> is ready to publish",
             "time": "2022-05-09T05:57:42.703Z",
             "read": false,
-            "link": "/dashboards/project",
+            "link": "/hospital/dashboard",
             "useRouter": true
           },
           {
@@ -32741,7 +32937,7 @@
             "description": "<strong>Roger Murray</strong> accepted your friend request",
             "time": "2022-05-09T03:57:42.703Z",
             "read": true,
-            "link": "/dashboards/project",
+            "link": "/hospital/dashboard",
             "useRouter": true
           },
           {
@@ -32750,7 +32946,7 @@
             "description": "<strong>Sophie Stone</strong> sent you a direct message",
             "time": "2022-05-09T01:57:42.703Z",
             "read": true,
-            "link": "/dashboards/project",
+            "link": "/hospital/dashboard",
             "useRouter": true
           },
           {
@@ -32770,7 +32966,7 @@
             "description": "Your submission has been accepted and you are ready to sign-up for the final assigment which will be ready in 2 days",
             "time": "2022-05-06T10:57:42.703Z",
             "read": true,
-            "link": "/dashboards/project",
+            "link": "/hospital/dashboard",
             "useRouter": true
           },
           {
